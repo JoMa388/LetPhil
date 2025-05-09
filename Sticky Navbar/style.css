@@ -1,0 +1,22 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 200vh;
+}
+.navbar {
+    position: sticky;
+    text-align: center;
+    background-color: grey;
+    top: 0;
+    padding-top: 15px;
+}
+
+
+nav li {
+    list-style: none;
+    padding: 2rem;
+    border: 2px solid black;
+}
+main{
+    margin-top: 500px;
+}
