@@ -1,0 +1,53 @@
+.jetbrains-mono {
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+    background-color: hsl(186,100%,5%);
+}
+
+h1 {
+    color: hsl(18,80%,50%);
+   
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    
+}
+#mainText {
+    text-align: center;
+}
+p {
+    font-size: 18px;
+    color: white;
+    padding: 5px;
+}
+
+img {
+    border-radius: 5px;
+    margin: 10px;
+}
+button {
+    margin-top: 50px;
+    padding: 20px;
+    font-size: 20px;
+    background-color: hsl(18,80%,50%);
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    color: aliceblue;
+}
+button:hover {
+    box-shadow: 0px 0px 10px rgb(255, 255, 255);
+}
+
+#hiddenText {
+    display: none;
+}
