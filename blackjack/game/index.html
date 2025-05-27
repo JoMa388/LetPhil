@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="grid-container">
+        <div class="dealer">
+            <img src="https://deckofcardsapi.com/static/img/back.png" alt="backofcardpng" class="cardBack">
+        </div>
+        <div class="dealerText" > </div>
+        <div class="playerText" data-value = "0">  </div>
+        <div class="centerText">Bust</div>
+        <div class="player">
+        </div>
+        <p class="deckText">Deck</p>
+        <img src="https://deckofcardsapi.com/static/img/back.png" alt="backofcardpng" class="deck">
+        <div class="deckCount">312</div>
+        <!-- <div class="modal-container">
+            <div class="modal">
+                <table>
+                    <tr>Hard Total</tr>
+                    <tr>
+                        <th></th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>A</th>
+                    </tr>
+                    <tr>
+                        <th>17</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                    </tr>
+                    <tr>
+                        <th>16</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>15</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>14</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>13</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>12</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>11</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>10</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>9</th>
+                        <th>H</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>8</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                </table>
+                <table>
+                    <tr>Soft Totals</tr>
+                    <tr>
+                        <th></th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>A</th>
+                    </tr>
+                    <tr>
+                        <th>A,9</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                    </tr>
+                    <tr>
+                        <th>A,8</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>S</th>
+                    </tr>
+                    <tr>
+                        <th>A,7</th>
+                        <th>S</th>
+                        <th>Ds</th>
+                        <th>Ds</th>
+                        <th>Ds</th>
+                        <th>Ds</th>
+                        <th>S</th>
+                        <th>S</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>A,6</th>
+                        <th>H</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>A,5</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>A,4</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>A,3</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                    <tr>
+                        <th>A,3</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>D</th>
+                        <th>D</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                        <th>H</th>
+                    </tr>
+                </table>
+            </div>
+        </div> -->
+        <section class="buttons">
+            <div class="leftButtons">
+                <button onclick="homePage()">Home</button>
+            </div> 
+            <div class="centerButtons hideButton">
+                <button onclick="standButton()">Stand</button>
+                <button onclick="hitButton()">Hit</button>
+            </div>
+            <div class="rightButton">
+                <button >Basic Strategy</button>
+            </div>  
+        </section>
+        <audio src="Draw Card.mp3" id="drawCard"></audio>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

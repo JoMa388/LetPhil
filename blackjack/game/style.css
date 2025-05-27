@@ -1,0 +1,191 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #002800;
+}
+
+.grid-container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.dealer {
+    height: 250px;
+    grid-column: 1/-1;
+    grid-row: 3;
+    display: flex;
+    justify-content: center;
+}
+.player {
+    height: 250px;
+    grid-column: 1/-1;
+    grid-row: 7;
+    display: flex;
+    justify-content: center;
+}
+img {
+    margin: 10px;
+}
+.deck {
+    height: 250px;
+    grid-column: 7;
+    grid-row: 5;
+}
+.buttons {
+    grid-row: 8;
+    grid-column: 1/-1;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+.leftButton, .rightButton {
+    flex: 0 0 auto;
+}
+.centerButton {
+    flex: 1;
+    display: flex;  
+}
+.hideButton {
+    display: none;
+}
+button {
+    height: 100px;
+    width: 200px;
+    margin: 1rem;
+   
+    padding: 1rem;
+    font-size: 20px;
+}
+.dealerText{
+    margin-top: 5rem;
+    grid-row: 4;
+    grid-column: 4;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: antiquewhite;
+}
+.playerText{
+    grid-row: 6;
+    grid-column: 4;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: antiquewhite;
+}
+.deckText {
+    grid-column: 7;
+    grid-row: 4;
+    margin: 3rem 0 0 3rem;
+    font-size: 40px;
+    font-weight: bold;
+    color: antiquewhite;
+}
+.cardBack {
+    position: fixed;
+    height: 230px;
+    margin-left: 196px;
+    z-index: 1;
+}
+.centerText {
+    grid-row: 5;
+    grid-column: 4;
+    font-size: 70px;
+    font-weight: bold;
+    color: rgb(78, 10, 10);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.deckCount {
+    grid-column: 7;
+    grid-row: 6;
+    font-size: 40px;
+    font-weight: bold;
+    color: antiquewhite;
+    text-align: center;
+    margin-right: 5rem;
+    display: none;
+    opacity: 0.7;
+}
+.deck:hover  +.deckCount{
+    display: block;
+}
+
+@media (max-width:1250px) {
+    button {
+        width: 150px;
+    }
+    .player {
+        height: 200px;
+    }
+    .dealer {
+        height: 200px;
+    }
+    .deck {
+        height: 200px;
+    }
+    .cardBack {
+        height: 180px;
+        margin-left: 160px;
+    }
+    .deckCount {
+        display: flex;
+        margin-left: 50px;
+    }
+}
+@media (max-width:1230px) {
+    .playerText{
+        font-size: 30px;
+        margin-left: 20px;
+    }
+    .dealerText{
+        font-size: 30px;
+        margin-left: 20px
+    }
+    .deckText{
+        font-size: 30px;
+        margin-left: 50px;
+    }
+}
+@media (max-width:844px) {
+    .playerText{
+        font-size: 15px;
+        margin-left: 200px;
+    }
+    .dealerText{
+        font-size: 15px;
+        margin-left: 200px;
+    }
+    .player {
+        height: 100px;
+    }
+    .dealer {
+        height: 100px;
+    }
+    .deck {
+        height: 80px;
+        margin-left: 90px;
+    }
+    .deckText{
+        font-size: 15px;
+        margin-left: 100px;
+        margin-top: 100px;
+    }
+    .deckCount {
+        font-size: 15px;
+        margin-left: 105px;
+    }
+    .cardBack {
+        height: 80px;
+        margin-left: 90px;
+    }
+    button {
+        width: 50px;
+        height: 50px;
+        font-size: 12px;
+        padding: 0;
+    }
+}

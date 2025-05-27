@@ -1,0 +1,30 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #002800;
+}
+.table-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+}
+.tableBox {
+    text-align: center;
+    color: antiquewhite;
+    font-weight: bold;
+}
+table {
+    border-collapse: collapse;
+    margin: 2rem;
+}
+
+th, td, tr {
+    padding: 1rem;
+    border: 5px solid black;
+    color: antiquewhite;
+    margin: 0;
+}
+tr {
+    gap: 0;
+    margin: 0;
+}
