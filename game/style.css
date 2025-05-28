@@ -35,7 +35,6 @@ img {
 .buttons {
     grid-row: 8;
     grid-column: 1/-1;
-    border: 1px solid black;
     display: flex;
     justify-content: space-between;
 }
@@ -112,6 +111,38 @@ button {
 }
 .deck:hover  +.deckCount{
     display: block;
+}
+.modal-container {
+    background-color: grey;
+    border: 1px solid aliceblue;
+    border-radius: 20px;
+}
+.modal {
+    display: flex;
+    justify-content: center;
+}
+.box {
+    text-align: center;
+    font-weight: bold;
+    margin: 2rem;
+}
+table{
+    border-collapse: collapse;
+}
+th,td,tr {
+    padding: 1rem;
+    border: 1px solid black;
+    margin: 0;
+}
+.standing {
+    background-color: yellow;   
+}
+.double {
+    background-color: green;   
+}
+.helpText {
+    font-size: 30px;
+    
 }
 
 @media (max-width:1250px) {

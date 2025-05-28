@@ -80,9 +80,9 @@ async function dealHand() {
     }
     let dealerCards = dealer.querySelectorAll("img:not(.cardBack)");
     let dealerScore = calculateScore(dealer);
-    dealerScore = parseInt(dealerScore.slice(0, -1));
+    dealerScore = parseInt(dealerScore.split("/")[0]);
     let playerScore =calculateScore(player); 
-    playerScore = parseInt(playerScore.slice(0, -1));
+    playerScore = parseInt(playerScore.split("/")[0]);
     player2Cards =playerScore;
     
     if(playerScore ==21 ) {
@@ -114,9 +114,7 @@ async function dealHand() {
     
 
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+
 
 
 
@@ -162,9 +160,7 @@ function calculateScore(contanier) {
     let contanierName = contanier.className.charAt(0).toUpperCase() + contanier.className.slice(1);
     let contanierObj = document.querySelector(`.${contanierText}`);
     contanierObj.innerText = `${contanierName}: ${score}`;
-
-
-    return score.toString() +aceCount.toString();
+    return score.toString() + "/" + cardList.length.toString()+aceCount.toString();
 }
 // After 2 Seconds clears board and deals next hand 
 function clearBoard() {
@@ -186,28 +182,36 @@ function clearBoard() {
 async function standButton() {
     cardBack.style.display = "none";
     centerButtons.classList.toggle("hideButton");
+
     let playerScore = calculateScore(player);
-    playerScore = parseInt(playerScore.slice(0, -1));
+    let playerCards = parseInt(playerScore.split("/")[1].slice(0,-1)); // Takes String after "/", and removes last char 
+    playerScore = parseInt(playerScore.split("/")[0]); 
+
     let dealerScore = calculateScore(dealer);
-    await sleep(1000);
     let aceCount = parseInt(dealerScore.slice(-1));
-    dealerScore = parseInt(dealerScore.slice(0, -1));
-    
+    dealerScore = parseInt(dealerScore.split("/")[0]);
+
+    await sleep(1000); // Pause when showing dealer second card, gives user time to understand/calculate
+
     while (dealerScore<17 || (dealerScore==17 && aceCount==1)) {
         let data = await drawCards(1);
         let card = loadCard(data.cards[0]);
         dealer.appendChild(card);
         drawCardAudio();
         let tempScore = calculateScore(dealer);
-        dealerScore = parseInt(tempScore.slice(0, -1));
+        dealerScore = parseInt(tempScore.split("/")[0]);
         aceCount = parseInt(tempScore.slice(-1));
-         await sleep(800);
+        await sleep(800);
     }
 
     centerText.style.color = "rgb(78, 10, 10)";
     if (dealerScore<22 && dealerScore>playerScore) {
         centerText.innerText = "Dealer: Winner";
         centerText.style.display = "flex";
+        if (playerCards ==2) {
+            storeStandingData(false, "S");
+        }
+        else {storeHittingData(false ,"H")}
     }
     else if (dealerScore==playerScore) {
         centerText.innerText = "Push";
@@ -218,6 +222,10 @@ async function standButton() {
         centerText.style.color = "Green";
         centerText.innerText = "Player: Winner";
         centerText.style.display = "flex";
+        if (playerCards ==2) {
+            storeStandingData(true, "S");
+        }
+        else {storeHittingData(true ,"H")}
     }
     clearBoard(); 
 }
@@ -230,10 +238,10 @@ async function hitButton() {
     let data = await drawCards(1);
     let card = loadCard(data.cards[0]);
     player.appendChild(card);
-    let score = calculateScore(player);
-    score = parseInt(score.slice(0,-1));
+    let playerScore = calculateScore(player);
+    playerScore = parseInt(playerScore.split("/")[0]);
     centerButtons.classList.toggle("hideButton");
-    if (score >21) {
+    if (playerScore >21) {
         storeHittingData(false);
         await sleep (100);
         centerText.innerText = "Player: Bust";
@@ -243,6 +251,8 @@ async function hitButton() {
         clearBoard();
     }
 }
+
+// Local Storage Function,
 function storeHittingData (isWinnner) {
     let dataString =localStorage.getItem(`H${player2Cards}/${dealerFaceCard}`);
     if (dataString!== null) {
@@ -271,17 +281,54 @@ function storeHittingData (isWinnner) {
         }
     }
 }
+// Local Storage Function,
+function storeStandingData (isWinnner) {
+    let dataString =localStorage.getItem(`S${player2Cards}/${dealerFaceCard}`);
+    if (dataString!== null) {
+        let parts = dataString.split("/");
+        let wins = parseInt(parts[0]);
+        let losses = parseInt(parts[1]);
+        if(isWinnner) {
+            wins;
+            dataString = `${wins}/${losses}`;
+            localStorage.setItem(`S${player2Cards}/${dealerFaceCard}`, `${dataString}`);
+        }
+        else {
+            losses++;
+            dataString = `${wins}/${losses}`;
+            localStorage.setItem(`S${player2Cards}/${dealerFaceCard}`, `${dataString}`);
+        }  
+    }
+    else {
+        if(isWinnner) {
+            dataString = 1 + "/0";
+            localStorage.setItem(`S${player2Cards}/${dealerFaceCard}`, `${dataString}`);
+        }
+        else {
+            dataString =  "0/" +1;
+            localStorage.setItem(`S${player2Cards}/${dealerFaceCard}`, `${dataString}`);
+        }
+    }
+}
+
+
+// function for delay when drawing cards
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Audio Function when cards are drawn fron deck
 function drawCardAudio () {
     const audio =document.getElementById("drawCard");
     audio.play();
 }
-
+// Home Button
 function homePage() {
-    window.location.href= "/blackjack";
+    window.location.href= "../index.html";
 }
 
 
-
+// Starts Game, gets deck, generates cut card, deals han
 async function startGame() {
     await getDeck();
     await drawCards(1); // Cut Card

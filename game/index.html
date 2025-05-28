@@ -19,10 +19,30 @@
         <p class="deckText">Deck</p>
         <img src="https://deckofcardsapi.com/static/img/back.png" alt="backofcardpng" class="deck">
         <div class="deckCount">312</div>
-        <!-- <div class="modal-container">
-            <div class="modal">
-                <table>
-                    <tr>Hard Total</tr>
+        <section class="buttons">
+            <div class="leftButtons">
+                <button onclick="homePage()">Home</button>
+            </div> 
+            <div class="centerButtons hideButton">
+                <button onclick="standButton()">Stand</button>
+                <button onclick="hitButton()">Hit</button>
+            </div>
+            <div class="rightButton">
+                <button >Basic Strategy</button>
+            </div>  
+        </section>
+        <audio src="Draw Card.mp3" id="drawCard"></audio>
+    </main>
+    <div class="modal-container">
+            <div class="modal"><div class="helpText">
+                    <p>S: Stand</p>
+                    <p>H: Hit</p>
+                    <p>D: Double</p>
+                    <p>DS: Double else Stand</p>
+                </div>
+                <div class="box">
+                    <h2>Hard Total</h2>
+                    <table>
                     <tr>
                         <th></th>
                         <th>2</th>
@@ -166,9 +186,11 @@
                         <th>H</th>
                         <th>H</th>
                     </tr>
-                </table>
-                <table>
-                    <tr>Soft Totals</tr>
+                    </table>
+                </div>
+                <div class="box">
+                    <h2>Soft Total</h2>
+                    <table>
                     <tr>
                         <th></th>
                         <th>2</th>
@@ -184,39 +206,39 @@
                     </tr>
                     <tr>
                         <th>A,9</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
                     </tr>
                     <tr>
                         <th>A,8</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
-                        <th>S</th>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
                     </tr>
                     <tr>
                         <th>A,7</th>
-                        <th>S</th>
+                        <td class="standing">S</td>
                         <th>Ds</th>
                         <th>Ds</th>
                         <th>Ds</th>
                         <th>Ds</th>
-                        <th>S</th>
-                        <th>S</th>
+                        <td class="standing">S</td>
+                        <td class="standing">S</td>
                         <th>H</th>
                         <th>H</th>
                         <th>H</th>
@@ -224,10 +246,10 @@
                     <tr>
                         <th>A,6</th>
                         <th>H</th>
-                        <th>D</th>
-                        <th>D</th>
-                        <th>D</th>
-                        <th>D</th>
+                        <td class="double">D</td>
+                        <td class="double">D</td>
+                        <td class="double">D</td>
+                        <td class="double">D</td>
                         <th>H</th>
                         <th>H</th>
                         <th>H</th>
@@ -238,9 +260,9 @@
                         <th>A,5</th>
                         <th>H</th>
                         <th>H</th>
-                        <th>D</th>
-                        <th>D</th>
-                        <th>D</th>
+                        <td class="double">D</td>
+                        <td class="double">D</td>
+                        <td class="double">D</td>
                         <th>H</th>
                         <th>H</th>
                         <th>H</th>
@@ -251,9 +273,9 @@
                         <th>A,4</th>
                         <th>H</th>
                         <th>H</th>
-                        <th>D</th>
-                        <th>D</th>
-                        <th>D</th>
+                        <td class="double">D</td>
+                        <td class="double">D</td>
+                        <td class="double">D</td>
                         <th>H</th>
                         <th>H</th>
                         <th>H</th>
@@ -265,8 +287,8 @@
                         <th>H</th>
                         <th>H</th>
                         <th>H</th>
-                        <th>D</th>
-                        <th>D</th>
+                        <td class="double">D</td>
+                        <td class="double">D</td>
                         <th>H</th>
                         <th>H</th>
                         <th>H</th>
@@ -275,34 +297,21 @@
                     </tr>
                     <tr>
                         <th>A,3</th>
-                        <th>H</th>
-                        <th>H</th>
-                        <th>H</th>
-                        <th>D</th>
-                        <th>D</th>
-                        <th>H</th>
-                        <th>H</th>
-                        <th>H</th>
-                        <th>H</th>
-                        <th>H</th>
+                        <td>H</td>
+                        <td>H</td>
+                        <td>H</td>
+                        <td class="double">D</td>
+                        <td class="double">D</td>
+                        <td>H</td>
+                        <td>H</td>
+                        <td>H</td>
+                        <td>H</td>
+                        <td>H</td>
                     </tr>
-                </table>
+                    </table>
+                </div>
             </div>
-        </div> -->
-        <section class="buttons">
-            <div class="leftButtons">
-                <button onclick="homePage()">Home</button>
-            </div> 
-            <div class="centerButtons hideButton">
-                <button onclick="standButton()">Stand</button>
-                <button onclick="hitButton()">Hit</button>
-            </div>
-            <div class="rightButton">
-                <button >Basic Strategy</button>
-            </div>  
-        </section>
-        <audio src="Draw Card.mp3" id="drawCard"></audio>
-    </main>
+        </div>
     <script src="script.js"></script>
 </body>
 </html>
