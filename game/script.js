@@ -242,6 +242,7 @@ async function hitButton() {
     playerScore = parseInt(playerScore.split("/")[0]);
     centerButtons.classList.toggle("hideButton");
     if (playerScore >21) {
+        centerButtons.classList.toggle("hideButton");
         storeHittingData(false);
         await sleep (100);
         centerText.innerText = "Player: Bust";
