@@ -4,3 +4,6 @@ function gamePage() {
 function statsPage () {
   window.location.href = "/statsPage";
 }
+function statsPage () {
+  window.location.href = "/contact_form";
+}
