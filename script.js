@@ -1,9 +1,9 @@
 function gamePage() {
-    window.location.href = "/game";
+  window.location.href = "/game";
 }
-function statsPage () {
+function statsPage() {
   window.location.href = "/statsPage";
 }
-function statsPage () {
-  window.location.href = "/contact_form";
+function contactPage() {
+  window.location.href = "/statsPage";
 }
